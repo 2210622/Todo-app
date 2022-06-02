@@ -64,6 +64,14 @@ pipeline {
         //     )
         //   }
         // }
+        stage('Static Analysis') {
+          agent {
+            label "sonarqube"
+          }
+          steps {
+            sh "sonar-scanner"
+          }
+        }
       }
       
       stage('Perform manual testing') {
