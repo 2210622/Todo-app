@@ -73,7 +73,7 @@ pipeline {
               SCANNER_HOME = tool 'SonarScanner'
             }
             steps {
-              sh "$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectBaseDir=/var/lib/jenkins/workspace/TodoAppPipeline@2/app"
+              sh "$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectBaseDir=/var/lib/jenkins/workspace/TodoAppPipeline@2/TodoSQ/app"
             }
           }
         }
