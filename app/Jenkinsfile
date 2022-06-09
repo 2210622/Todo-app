@@ -34,46 +34,50 @@ pipeline {
           verbose: true)])
         }
       }
-      
-      stage('Run Automated Tests') {
-        steps {
-          dir('cypresstests'){
-            //sh 'ls'
-            sh 'npm prune'
-            sh 'npm cache clean --force'
-            sh 'npm i'
-            // sh 'npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator'
-            // sh 'rm -f mochawesome.json'
-            sh 'npm run jenkinstest' // --reporter mochawesome missing in cypress package.json
-            // sh 'npx mochawesome-merge cypress/results/*.json -o mochawesome-report/mochawesome.json'
-            // sh 'npx marge mochawesome-report/mochawesome.json'
+
+      stage('Run Tests') {
+        parallel {
+          stage('Run Automated Tests') {
+            steps {
+              dir('cypresstests'){
+                //sh 'ls'
+                sh 'npm prune'
+                sh 'npm cache clean --force'
+                sh 'npm i'
+                // sh 'npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator'
+                // sh 'rm -f mochawesome.json'
+                sh 'npm run jenkinstest' // --reporter mochawesome missing in cypress package.json
+                // sh 'npx mochawesome-merge cypress/results/*.json -o mochawesome-report/mochawesome.json'
+                // sh 'npx marge mochawesome-report/mochawesome.json'
+              }
+            }
+            // post {
+            //   success {
+            //     publishHTML (
+            //       target : [
+            //         allowMissing: false,
+            //         alwaysLinkToLastBuild: true,
+            //         keepAll: true,
+            //         reportDir: 'mochawesome-report',
+            //         reportFiles: 'mochawesome.html',
+            //         reportName: 'My Reports',
+            //         reportTitles: 'The Report'
+            //       ]
+            //     )
+            //   }
+            // }
+          }
+          
+          stage('Static Analysis') {
+            environment {
+              SCANNER_HOME = tool 'SonarScanner'
+            }
+            steps {
+              sh "$SCANNER_HOME/bin/sonar-scanner"
+            }
           }
         }
-        // post {
-        //   success {
-        //     publishHTML (
-        //       target : [
-        //         allowMissing: false,
-        //         alwaysLinkToLastBuild: true,
-        //         keepAll: true,
-        //         reportDir: 'mochawesome-report',
-        //         reportFiles: 'mochawesome.html',
-        //         reportName: 'My Reports',
-        //         reportTitles: 'The Report'
-        //       ]
-        //     )
-        //   }
-        // }
       }
-      
-      stage('Static Analysis') {
-          agent {
-            label "sonarqube"
-          }
-          steps {
-            sh "sonar-scanner"
-          }
-        }
       
       stage('Perform manual testing') {
         steps {
