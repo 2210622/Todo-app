@@ -18,9 +18,14 @@
                 <button type="submit">Add Item</button>
             </form>
             <ul>
-                <% for(var i=0;i<todos.length;i++){%>
-                    <li><%= todos[i].item %></li>
-                <% } %>
+                    <% for(var i=0;i<todos.length;i++){%>  
+                        <div class="todo">
+                            <li>
+                                <%= todos[i].item %>
+                            </li>
+                            <button class="edit-button" value="<%= todos[i].item %>">✏️</button>
+                        </div>
+                    <% } %>
             </ul>
             <form id="deleteallform" method="POST" action="/todo/delete/all">
                 <button type="submit">Delete All</button>

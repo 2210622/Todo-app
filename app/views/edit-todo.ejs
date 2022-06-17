@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-1.12.3.min.js"></script>
+        <script src="/assets/todo-edit.js"></script>
+        <script src="/assets/mutation.js"></script>
+        <link href="/assets/style.css" rel="stylesheet" type="text/css">
+        <title>Todo App | Software Quality</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
+        <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    </head>
+    <body>
+        <div class="info">
+        <h1>Hi!</h1>
+        </div>
+        <div id="todo-table">
+            <form method="POST" action="/todo/edit">
+                <input type="text" name="item" value="<%= todo[0].item %>" required>
+                <button type="submit" value="<%= todo[0].item %>">Edit Item</button>
+            </form>
+        </div>
+        <div class="footer">
+            Made with <font color="red">♥</font> by <a target="_blank" href="https://github.com/ishandeveloper">ishandeveloper </a>
+        </div>
+    </body>
+</html>
