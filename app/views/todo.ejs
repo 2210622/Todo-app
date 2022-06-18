@@ -13,7 +13,7 @@
         <h1>Hi!</h1>
         </div>
         <div id="todo-table">
-            <form method="POST" action="/todo">
+            <form id="createform" method="POST" action="/todo">
                 <input type="text" name="item" placeholder="Add New Item..." required>
                 <button type="submit">Add Item</button>
             </form>
@@ -27,6 +27,9 @@
                         </div>
                     <% } %>
             </ul>
+            <form id="deleteallform" method="POST" action="/todo/delete/all">
+                <button type="submit">Delete All</button>
+            </form>
         </div>
         <div class="footer">
             Made with <font color="red">♥</font> by <a target="_blank" href="https://github.com/ishandeveloper">ishandeveloper </a>

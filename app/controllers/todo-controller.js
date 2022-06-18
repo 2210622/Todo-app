@@ -46,13 +46,13 @@ module.exports = (app) => {
     });
 
     app.post('/todo', urlEncodedParser, (req, res) => {
-        var newTodo = Todo(req.body).save((err, data) => {
+        Todo(req.body).save((err, data) => {
             if (err) throw err;
             res.json({
                 todos: data
             });
         });
-        // res.redirect('/todo'); 
+        //res.redirect('/todo'); 
     });
 
     app.delete('/todo/:item', (req, res) => {
@@ -61,6 +61,15 @@ module.exports = (app) => {
         }).deleteOne((err, data) => {
             if (err) throw err;
             res.json({
+                todos: data
+            });
+        });
+    });
+
+    app.post('/todo/delete/all', (req, res) => {
+        Todo.deleteMany({}, (err, data) => {
+            if (err) throw err;
+            res.render('todo.ejs', {
                 todos: data
             });
         });
