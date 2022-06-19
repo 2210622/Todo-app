@@ -87,6 +87,15 @@ module.exports = (app) => {
         });
     });
 
+    app.get('/todo/about', (req, res) => {
+        Todo.find({}, (err, data) => {
+            if (err) throw err;
+            res.render('about-todo.ejs', {
+                todos: data
+            });
+        });
+    });
+
     app.post('/todo/edit', urlEncodedParser, (req, res) => {
         Todo.findOneAndUpdate({item: req.body.oldItem}, {item: req.body.item}, (err, data) => {
             if (err) throw err;

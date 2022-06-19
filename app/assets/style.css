@@ -127,3 +127,38 @@ a:hover{
 .show-form{
     visibility: visible !important;
 }
+
+.info{
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-button{
+    width: 10%;
+    padding: 5px;
+}
+
+h2{
+    font-family: "Segoe UI Light", sans-serif;
+    text-transform: capitalize;
+}
+
+.about-page{
+    text-align: center;
+}
+
+.project-developers{
+    display: flex;
+    place-content: center;
+}
+
+.project-developer-1{
+    margin-right: 100px;
+}
+
+.info-about{
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 50px;
+}
