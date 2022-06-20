@@ -11,7 +11,7 @@ pipeline {
               sshPublisherDesc(
               configName: 'staging', transfers: [
                 sshTransfer(
-                  cleanRemote: true, 
+                  cleanRemote: false, 
                   excludes: 'node_modules/',
                   //execCommand: 'echo "Replace me by your build/install scripts"', 
                   execCommand: '''
@@ -94,7 +94,7 @@ pipeline {
               sshPublisherDesc(
               configName: 'production', transfers: [
                 sshTransfer(
-                  cleanRemote: true, 
+                  cleanRemote: false, 
                   excludes: '', 
                   execCommand: '''
                                 cd todoapp/app
