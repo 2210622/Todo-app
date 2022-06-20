@@ -95,7 +95,8 @@ pipeline {
               configName: 'production', transfers: [
                 sshTransfer(
                   cleanRemote: false, 
-                  excludes: '', 
+                  excludes: 'app/.scannerwork/',
+                  //execCommand: 'echo "Replace me by your build/install scripts"', 
                   execCommand: '''
                                 cd todoapp/app
                                 npm install
