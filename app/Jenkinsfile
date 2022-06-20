@@ -12,7 +12,7 @@ pipeline {
               configName: 'staging', transfers: [
                 sshTransfer(
                   cleanRemote: false, 
-                  excludes: 'node_modules/,.scannerwork/',
+                  excludes: 'app/.scannerwork/',
                   //execCommand: 'echo "Replace me by your build/install scripts"', 
                   execCommand: '''
                                 cd todoapp/app
