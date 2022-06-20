@@ -28,7 +28,7 @@ pipeline {
                   remoteDirectory: 'todoapp', 
                   remoteDirectorySDF: false, 
                   removePrefix: '', 
-                  sourceFiles: 'app/*')], 
+                  sourceFiles: 'app/**/*')], 
           usePromotionTimestamp: false, 
           useWorkspaceInPromotion: false, 
           verbose: true)])
@@ -111,7 +111,7 @@ pipeline {
                   remoteDirectory: 'todoapp', 
                   remoteDirectorySDF: false, 
                   removePrefix: '', 
-                  sourceFiles: 'app/*')], 
+                  sourceFiles: 'app/**/*')], 
           usePromotionTimestamp: false, 
           useWorkspaceInPromotion: false, 
           verbose: true)])
