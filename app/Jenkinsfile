@@ -11,11 +11,11 @@ pipeline {
               sshPublisherDesc(
               configName: 'staging', transfers: [
                 sshTransfer(
-                  cleanRemote: false, 
-                  excludes: '',
+                  cleanRemote: true, 
+                  excludes: 'node_modules/',
                   //execCommand: 'echo "Replace me by your build/install scripts"', 
                   execCommand: '''
-                                cd todoapp
+                                cd todoapp/app
                                 npm install
                                 pm2 delete app 2> /dev/null
                                 pm2 start -f app.js
@@ -94,10 +94,10 @@ pipeline {
               sshPublisherDesc(
               configName: 'production', transfers: [
                 sshTransfer(
-                  cleanRemote: false, 
+                  cleanRemote: true, 
                   excludes: '', 
                   execCommand: '''
-                                cd todoapp
+                                cd todoapp/app
                                 npm install
                                 pm2 delete app 2> /dev/null
                                 pm2 start -f app.js
