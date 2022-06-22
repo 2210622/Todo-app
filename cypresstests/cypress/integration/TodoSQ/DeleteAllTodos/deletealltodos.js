@@ -23,3 +23,13 @@ When('I click on the delete all button', () => {
 Then('I see that all todos were deleted from the list', () => {
  cy.get('li').should('not.exist')
 })
+
+
+And('I have no todos on the list', () => {
+   cy.get('#deleteallform').submit()
+   cy.wait(1000)
+})
+
+Then('I see that there are still no todos on the list', () => {
+   cy.get('.todo').should('not.exist')
+})

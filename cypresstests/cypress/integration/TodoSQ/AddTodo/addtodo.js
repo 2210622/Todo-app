@@ -13,10 +13,10 @@ When('I write {string} in the text field', (string) => {
 })
 
 When('I press the Add button', () => {
- cy.get('button').click()
+ cy.get('#createform').submit()
+ cy.wait(1000)
 })
 
 Then('I see that it was added to the list', () => {
- cy.wait(1000)
- cy.get('li:last-child()').contains(todo)
+ cy.get('.todo:last-child()').get('li').contains(todo)
 })
