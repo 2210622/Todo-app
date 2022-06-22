@@ -17,6 +17,7 @@ And('I have todos on the list', () => {
 
 When('I click on the edit button', () => {
  cy.get('.edit-button').last().click()
+ cy.wait(1000)
  //cy.visit(`${url}/todo/${todo}/edit`)
 })
 
