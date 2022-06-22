@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "cypress run",
-    "jenkinstest": "cypress run --config baseUrl=http://34.77.238.157:8080"
+    "jenkinstest": "cypress run--spec 'cypress/integration/TodoSQ/AddTodo.feature,cypress/integration/TodoSQ/DeleteTodo.feature,cypress/integration/TodoSQ/DeleteAllTodos.feature' --config baseUrl=http://34.77.238.157:8080"
   },
   "author": "",
   "license": "ISC",
